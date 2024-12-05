@@ -8,20 +8,27 @@ namespace WebApp.Controllers;
 [Route("[controller]")]
 public class Api : Controller
 {
-    [HttpGet("/login")]
-    public IActionResult loginPage()
+    [HttpGet("/{pageName}")]
+    public IActionResult getPage(String pageName)
     {
-        string path = Path.Combine(Directory.GetCurrentDirectory(), "frontend", "loginPage.html");
+        string path = Path.Combine(Directory.GetCurrentDirectory(), "frontend", pageName + ".html");
             Stream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
             string contentType = "text/html";
 
             return File(fileStream, contentType);
     }
     
-    [HttpGet("/login/{username}")]
+    [HttpPost("/login/{username}")]
     public IActionResult loginUser(string username)
     {
         //TODO: log the user in
+        return Ok();
+    }
+
+    [HttpPost("/signup")]
+    public IActionResult signupUser()
+    {
+        
         return Ok();
     }
     
