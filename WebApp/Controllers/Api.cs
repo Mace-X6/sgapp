@@ -11,8 +11,11 @@ public class Api : Controller
     [HttpGet("/login")]
     public IActionResult loginPage()
     {
-        //TODO: send login html
-        return Ok();
+        string path = Path.Combine(Directory.GetCurrentDirectory(), "frontend", "loginPage.html");
+            Stream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
+            string contentType = "text/html";
+
+            return File(fileStream, contentType);
     }
     
     [HttpGet("/login/{username}")]
@@ -25,9 +28,10 @@ public class Api : Controller
     [HttpGet("/images/{imageName}")]
     public IActionResult getImage(string imageName)
     {
-        if (System.IO.File.Exists(Path.Combine(Directory.GetCurrentDirectory(),"wwwroot", "images", imageName)))
+        string path = Path.Combine(Directory.GetCurrentDirectory(), "resources", imageName);
+        if (System.IO.File.Exists(path))
         {
-            Stream fileStream = new FileStream(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", imageName), FileMode.Open, FileAccess.Read);
+            Stream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
             string contentType = "image/png";
 
             return File(fileStream, contentType);
