@@ -1,0 +1,50 @@
+/* main */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+* {
+	margin: 0;
+	color: black;
+	background: #bc8203;
+	overflow: hidden;
+	font-family: "Space Grotesk", sans-serif;
+}
+
+
+/* nav */
+
+nav {
+	padding: 20px;
+	padding-right: 2vw;
+	background-color: #bcb3a0;
+	font-size: 30px;
+}
+
+nav li {
+	background-color: #bcb3a0;
+	list-style-type: none;
+	vertical-align: center;
+}
+
+nav li a {
+	text-decoration: none;
+	color: black;
+	float: left;
+	margin-left: 1vw;
+	font-weight: 600;
+	background-color: #bcb3a0;
+	vertical-align: center;
+}
+
+nav li a:hover {
+	text-decoration: underline;
+  	transition: 0.2s;
+}
+
+nav li .user {
+	float: right;
+}
+
+nav li .user img {
+	max-height: 50px;
+}
