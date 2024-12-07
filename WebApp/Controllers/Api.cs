@@ -8,6 +8,19 @@ namespace WebApp.Controllers;
 [Route("[controller]")]
 public class Api : Controller
 {
+
+    [HttpGet("/")]
+    public IActionResult landingPage()
+    {
+        //TODO: this should check if the user is already logged in, right now it just sends you to the login page
+        string pageName = "login";
+        string path = Path.Combine(Directory.GetCurrentDirectory(), "frontend", pageName + ".html");
+        Stream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
+        string contentType = "text/html";
+
+        return File(fileStream, contentType);
+    }
+    
     [HttpGet("/{pageName}")]
     public IActionResult getPage(String pageName)
     {
@@ -18,7 +31,7 @@ public class Api : Controller
             return File(fileStream, contentType);
     }
     
-    [HttpPost("/login/{username}")]
+    [HttpPost("/login")]
     public IActionResult loginUser(string username)
     {
         //TODO: log the user in
@@ -45,8 +58,4 @@ public class Api : Controller
         }
         return BadRequest();
     }
-    
-    
-    
-    
 }
